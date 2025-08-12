@@ -1,0 +1,35 @@
+# Change the default theme to be use when building the site with Hugo
+
+baseURL = "https://whatdadogdoing.github.io/workshop_fcj/"
+publishDir = "docs"
+relativeURLs = true
+canonifyURLs = true
+
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "workshop"
+  # Git hub repo link
+  editURL = ""
+  description = "Build a complete enterprise-grade CI/CD pipeline for a full-stack application using AWS services, GitHub Actions, and modern DevOps practices."
+  author = "whatdadogdoing@gmail.com"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  
+[Languages]
+[Languages.en]
+title = "Enterprise CI/CD Pipeline Workshop"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub Repository"
+identifier = "GitHub Repository"
+url = "https://github.com/whatdadogdoing/workshop_fcj"
+weight = 20

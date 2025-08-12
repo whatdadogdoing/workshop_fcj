@@ -1,6 +1,8 @@
 ---
-layout: default
-title: Enterprise CI/CD Pipeline Workshop
+title: "Enterprise CI/CD Pipeline Workshop"
+date: 2024-01-12
+weight: 1
+chapter: false
 ---
 
 # Enterprise CI/CD Pipeline Workshop

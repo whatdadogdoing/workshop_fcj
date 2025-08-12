@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.1">
+    <meta name="description" content="">
+<meta name="author" content="whatdadogdoing@gmail.com">
+
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <title>Module 9: Cost Optimization :: Enterprise CI/CD Pipeline Workshop</title>
+
+    
+    <link href="../css/nucleus.css?1754917932" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1754917932" rel="stylesheet">
+    <link href="../css/hybrid.css?1754917932" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1754917932" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1754917932" rel="stylesheet">
+    <link href="../css/auto-complete.css?1754917932" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1754917932" rel="stylesheet">
+    <link href="../css/theme.css?1754917932" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1754917932" rel="stylesheet">
+    
+    <link href="../css/theme-workshop.css?1754917932" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1754917932"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../9-cost-optimization/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="../">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1754917932"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1754917932"></script>
+<script type="text/javascript">
+    
+        var baseurl = "../";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1754917932"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../1-environment-setup/" title="Environment Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../1-environment-setup/">
+           <b> 1. </b> Environment Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../2-application-overview/" title="Application Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../2-application-overview/">
+           <b> 2. </b> Application Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../3-containerization/" title="Containerization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../3-containerization/">
+           <b> 3. </b> Containerization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../4-cicd-pipeline/" title="CI/CD Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../4-cicd-pipeline/">
+           <b> 4. </b> CI/CD Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../5-aws-infrastructure/" title="AWS Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../5-aws-infrastructure/">
+           <b> 5. </b> AWS Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../6-security-compliance/" title="Security & Compliance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../6-security-compliance/">
+           <b> 6. </b> Security & Compliance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../7-monitoring/" title="Monitoring" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../7-monitoring/">
+           <b> 7. </b> Monitoring
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../8-deployment-strategies/" title="Deployment Strategies" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../8-deployment-strategies/">
+           <b> 8. </b> Deployment Strategies
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../9-cost-optimization/" title="Cost Optimization" class="dd-item active
+        
+        
+        
+        ">
+      <a href="../9-cost-optimization/">
+           <b> 9. </b> Cost Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../10-cleanup/" title="Clean Up Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10-cleanup/">
+           <b> 10. </b> Clean Up Resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/whatdadogdoing/workshop_fcj"><i class='fab fa-github'></i> GitHub Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="../" selected>English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>28-07-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://github.com/whatdadogdoing"  style="color:orange">whatdadogdoing </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+
+        
+
+<span id="sidebar-toggle-span">
+<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
+</span>
+
+ 
+<h1 id="module-9-cost-optimization">Module 9: Cost Optimization</h1>
+<h3 id="overview">Overview</h3>
+<p>Optimize AWS costs through resource right-sizing, automation, cost monitoring, and implementing FinOps best practices for the CI/CD pipeline and infrastructure.</p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Implement cost monitoring and alerting with AWS Cost Explorer</li>
+<li>Right-size ECS tasks and RDS instances</li>
+<li>Optimize container images and storage costs</li>
+<li>Set up automated resource scheduling</li>
+<li>Implement cost allocation tags and budgets</li>
+<li>Use Spot instances and Reserved Instances effectively</li>
+</ul>
+<h3 id="cost-monitoring-alerting">Cost Monitoring & Alerting</h3>
+<h4 id="aws-budgets-setup">AWS Budgets Setup</h4>
+<pre><code># Create cost budget with CloudFormation
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Enterprise Application Cost Budget'
+
+Parameters:
+  BudgetAmount:
+    Type: Number
+    Default: 500
+    Description: Monthly budget amount in USD
+  
+  NotificationEmail:
+    Type: String
+    Description: Email for budget notifications
+
+Resources:
+  EnterpriseBudget:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        BudgetName: 'Enterprise-App-Monthly-Budget'
+        BudgetLimit:
+          Amount: !Ref BudgetAmount
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+        CostFilters:
+          TagKey:
+            - 'Project'
+          TagValue:
+            - 'enterprise-app'
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 80
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref NotificationEmail
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref NotificationEmail
+
+# CLI command to create budget
+aws budgets create-budget \
+    --account-id 123456789012 \
+    --budget '{
+        "BudgetName": "Enterprise-App-Budget",
+        "BudgetLimit": {
+            "Amount": "500",
+            "Unit": "USD"
+        },
+        "TimeUnit": "MONTHLY",
+        "BudgetType": "COST",
+        "CostFilters": {
+            "TagKey": ["Project"],
+            "TagValue": ["enterprise-app"]
+        }
+    }' \
+    --notifications-with-subscribers '[
+        {
+            "Notification": {
+                "NotificationType": "ACTUAL",
+                "ComparisonOperator": "GREATER_THAN",
+                "Threshold": 80,
+                "ThresholdType": "PERCENTAGE"
+            },
+            "Subscribers": [
+                {
+                    "SubscriptionType": "EMAIL",
+                    "Address": "admin@company.com"
+                }
+            ]
+        }
+    ]'
+</code></pre>
+<h4 id="cost-anomaly-detection">Cost Anomaly Detection</h4>
+<pre><code># Create cost anomaly detector
+aws ce create-anomaly-detector \
+    --anomaly-detector '{
+        "DetectorName": "Enterprise-App-Anomaly-Detector",
+        "MonitorType": "DIMENSIONAL",
+        "DimensionKey": "SERVICE",
+        "MatchOptions": ["EQUALS"],
+        "MonitorSpecification": {
+            "DimensionKey": "SERVICE",
+            "MatchOptions": ["EQUALS"],
+            "Values": ["Amazon Elastic Container Service", "Amazon Relational Database Service"]
+        }
+    }'
+
+# Create anomaly subscription
+aws ce create-anomaly-subscription \
+    --anomaly-subscription '{
+        "SubscriptionName": "Enterprise-App-Anomaly-Alerts",
+        "MonitorArnList": ["arn:aws:ce::123456789012:anomalydetector/12345678-1234-1234-1234-123456789012"],
+        "Subscribers": [
+            {
+                "Address": "admin@company.com",
+                "Type": "EMAIL"
+            }
+        ],
+        "Threshold": 100,
+        "Frequency": "DAILY"
+    }'
+</code></pre>
+<h3 id="resource-right-sizing">Resource Right-sizing</h3>
+<h4 id="ecs-task-optimization">ECS Task Optimization</h4>
+<pre><code># Python script to analyze ECS task utilization
+import boto3
+import json
+from datetime import datetime, timedelta
+
+class ECSOptimizer:
+    def __init__(self):
+        self.ecs = boto3.client('ecs')
+        self.cloudwatch = boto3.client('cloudwatch')
+        self.ce = boto3.client('ce')
+    
+    def get_task_utilization(self, cluster_name, service_name, days=7):
+        """Get CPU and memory utilization for ECS tasks"""
+        end_time = datetime.utcnow()
+        start_time = end_time - timedelta(days=days)
+        
+        # Get CPU utilization
+        cpu_response = self.cloudwatch.get_metric_statistics(
+            Namespace='AWS/ECS',
+            MetricName='CPUUtilization',
+            Dimensions=[
+                {'Name': 'ServiceName', 'Value': service_name},
+                {'Name': 'ClusterName', 'Value': cluster_name}
+            ],
+            StartTime=start_time,
+            EndTime=end_time,
+            Period=3600,  # 1 hour
+            Statistics=['Average', 'Maximum']
+        )
+        
+        # Get memory utilization
+        memory_response = self.cloudwatch.get_metric_statistics(
+            Namespace='AWS/ECS',
+            MetricName='MemoryUtilization',
+            Dimensions=[
+                {'Name': 'ServiceName', 'Value': service_name},
+                {'Name': 'ClusterName', 'Value': cluster_name}
+            ],
+            StartTime=start_time,
+            EndTime=end_time,
+            Period=3600,
+            Statistics=['Average', 'Maximum']
+        )
+        
+        return {
+            'cpu': cpu_response['Datapoints'],
+            'memory': memory_response['Datapoints']
+        }
+    
+    def recommend_task_size(self, utilization_data):
+        """Recommend optimal task size based on utilization"""
+        cpu_data = utilization_data['cpu']
+        memory_data = utilization_data['memory']
+        
+        if not cpu_data or not memory_data:
+            return None
+        
+        # Calculate average and peak utilization
+        avg_cpu = sum(d['Average'] for d in cpu_data) / len(cpu_data)
+        max_cpu = max(d['Maximum'] for d in cpu_data)
+        
+        avg_memory = sum(d['Average'] for d in memory_data) / len(memory_data)
+        max_memory = max(d['Maximum'] for d in memory_data)
+        
+        # Recommend based on peak usage + 20% buffer
+        recommended_cpu = int(max_cpu * 1.2)
+        recommended_memory = int(max_memory * 1.2)
+        
+        # Map to valid ECS CPU/memory combinations
+        cpu_memory_combinations = {
+            256: [512, 1024, 2048],
+            512: [1024, 2048, 3072, 4096],
+            1024: [2048, 3072, 4096, 5120, 6144, 7168, 8192],
+            2048: [4096, 5120, 6144, 7168, 8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, 16384],
+            4096: [8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, 16384, 17408, 18432, 19456, 20480, 21504, 22528, 23552, 24576, 25600, 26624, 27648, 28672, 29696, 30720]
+        }
+        
+        # Find the best fit
+        best_cpu = None
+        best_memory = None
+        
+        for cpu, memory_options in cpu_memory_combinations.items():
+            if cpu >= recommended_cpu:
+                for memory in memory_options:
+                    if memory >= recommended_memory:
+                        best_cpu = cpu
+                        best_memory = memory
+                        break
+                if best_cpu:
+                    break
+        
+        return {
+            'current_utilization': {
+                'avg_cpu': avg_cpu,
+                'max_cpu': max_cpu,
+                'avg_memory': avg_memory,
+                'max_memory': max_memory
+            },
+            'recommended': {
+                'cpu': best_cpu,
+                'memory': best_memory
+            }
+        }
+    
+    def estimate_cost_savings(self, current_cpu, current_memory, recommended_cpu, recommended_memory):
+        """Estimate monthly cost savings"""
+        # Fargate pricing (us-east-1)
+        cpu_price_per_hour = 0.04048  # per vCPU
+        memory_price_per_hour = 0.004445  # per GB
+        
+        hours_per_month = 24 * 30
+        
+        current_cost = (
+            (current_cpu / 1024) * cpu_price_per_hour + 
+            (current_memory / 1024) * memory_price_per_hour
+        ) * hours_per_month
+        
+        recommended_cost = (
+            (recommended_cpu / 1024) * cpu_price_per_hour + 
+            (recommended_memory / 1024) * memory_price_per_hour
+        ) * hours_per_month
+        
+        savings = current_cost - recommended_cost
+        savings_percentage = (savings / current_cost) * 100 if current_cost > 0 else 0
+        
+        return {
+            'current_monthly_cost': current_cost,
+            'recommended_monthly_cost': recommended_cost,
+            'monthly_savings': savings,
+            'savings_percentage': savings_percentage
+        }
+
+# Usage example
+optimizer = ECSOptimizer()
+utilization = optimizer.get_task_utilization('enterprise-cluster', 'enterprise-service')
+recommendation = optimizer.recommend_task_size(utilization)
+
+if recommendation:
+    cost_analysis = optimizer.estimate_cost_savings(
+        current_cpu=512,
+        current_memory=1024,
+        recommended_cpu=recommendation['recommended']['cpu'],
+        recommended_memory=recommendation['recommended']['memory']
+    )
+    
+    print(json.dumps({
+        'utilization_analysis': recommendation,
+        'cost_analysis': cost_analysis
+    }, indent=2))
+</code></pre>
+<h4 id="rds-optimization">RDS Optimization</h4>
+<pre><code># RDS Performance Insights analysis
+import boto3
+from datetime import datetime, timedelta
+
+class RDSOptimizer:
+    def __init__(self):
+        self.rds = boto3.client('rds')
+        self.pi = boto3.client('pi')
+        self.cloudwatch = boto3.client('cloudwatch')
+    
+    def get_rds_utilization(self, db_instance_id, days=7):
+        """Get RDS CPU and connection utilization"""
+        end_time = datetime.utcnow()
+        start_time = end_time - timedelta(days=days)
+        
+        # Get CPU utilization
+        cpu_response = self.cloudwatch.get_metric_statistics(
+            Namespace='AWS/RDS',
+            MetricName='CPUUtilization',
+            Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance_id}],
+            StartTime=start_time,
+            EndTime=end_time,
+            Period=3600,
+            Statistics=['Average', 'Maximum']
+        )
+        
+        # Get database connections
+        connections_response = self.cloudwatch.get_metric_statistics(
+            Namespace='AWS/RDS',
+            MetricName='DatabaseConnections',
+            Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance_id}],
+            StartTime=start_time,
+            EndTime=end_time,
+            Period=3600,
+            Statistics=['Average', 'Maximum']
+        )
+        
+        # Get read/write IOPS
+        read_iops = self.cloudwatch.get_metric_statistics(
+            Namespace='AWS/RDS',
+            MetricName='ReadIOPS',
+            Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance_id}],
+            StartTime=start_time,
+            EndTime=end_time,
+            Period=3600,
+            Statistics=['Average', 'Maximum']
+        )
+        
+        return {
+            'cpu': cpu_response['Datapoints'],
+            'connections': connections_response['Datapoints'],
+            'read_iops': read_iops['Datapoints']
+        }
+    
+    def recommend_instance_type(self, current_instance_type, utilization_data):
+        """Recommend optimal RDS instance type"""
+        cpu_data = utilization_data['cpu']
+        
+        if not cpu_data:
+            return None
+        
+        avg_cpu = sum(d['Average'] for d in cpu_data) / len(cpu_data)
+        max_cpu = max(d['Maximum'] for d in cpu_data)
+        
+        # Instance type recommendations based on CPU utilization
+        if max_cpu < 20:
+            recommended_class = 'db.t3.micro'
+        elif max_cpu < 40:
+            recommended_class = 'db.t3.small'
+        elif max_cpu < 60:
+            recommended_class = 'db.t3.medium'
+        elif max_cpu < 80:
+            recommended_class = 'db.t3.large'
+        else:
+            recommended_class = 'db.t3.xlarge'
+        
+        return {
+            'current_instance_type': current_instance_type,
+            'recommended_instance_type': recommended_class,
+            'avg_cpu_utilization': avg_cpu,
+            'max_cpu_utilization': max_cpu
+        }
+
+# Automated RDS scaling with Lambda
+def lambda_handler(event, context):
+    rds = boto3.client('rds')
+    cloudwatch = boto3.client('cloudwatch')
+    
+    db_instance_id = event['db_instance_id']
+    
+    # Get current CPU utilization
+    response = cloudwatch.get_metric_statistics(
+        Namespace='AWS/RDS',
+        MetricName='CPUUtilization',
+        Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance_id}],
+        StartTime=datetime.utcnow() - timedelta(hours=1),
+        EndTime=datetime.utcnow(),
+        Period=300,
+        Statistics=['Average']
+    )
+    
+    if response['Datapoints']:
+        avg_cpu = sum(d['Average'] for d in response['Datapoints']) / len(response['Datapoints'])
+        
+        # Get current instance info
+        db_info = rds.describe_db_instances(DBInstanceIdentifier=db_instance_id)
+        current_class = db_info['DBInstances'][0]['DBInstanceClass']
+        
+        # Scale up if CPU > 80% for sustained period
+        if avg_cpu > 80 and current_class == 'db.t3.medium':
+            rds.modify_db_instance(
+                DBInstanceIdentifier=db_instance_id,
+                DBInstanceClass='db.t3.large',
+                ApplyImmediately=False  # Apply during maintenance window
+            )
+            
+            return {
+                'statusCode': 200,
+                'body': f'Scaled up {db_instance_id} from {current_class} to db.t3.large'
+            }
+        
+        # Scale down if CPU < 20% for sustained period
+        elif avg_cpu < 20 and current_class == 'db.t3.large':
+            rds.modify_db_instance(
+                DBInstanceIdentifier=db_instance_id,
+                DBInstanceClass='db.t3.medium',
+                ApplyImmediately=False
+            )
+            
+            return {
+                'statusCode': 200,
+                'body': f'Scaled down {db_instance_id} from {current_class} to db.t3.medium'
+            }
+    
+    return {
+        'statusCode': 200,
+        'body': 'No scaling action needed'
+    }
+</code></pre>
+<h3 id="container-storage-optimization">Container & Storage Optimization</h3>
+<h4 id="docker-image-optimization">Docker Image Optimization</h4>
+<pre><code># Optimized multi-stage Dockerfile
+# Stage 1: Build dependencies
+FROM node:18-alpine AS node-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Stage 2: Python dependencies
+FROM python:3.9-slim AS python-builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# Stage 3: Final runtime image
+FROM python:3.9-slim
+
+# Install only runtime dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash app
+
+# Copy Python packages from builder
+COPY --from=python-builder /root/.local /home/app/.local
+
+# Copy application code
+WORKDIR /app
+COPY --chown=app:app . .
+
+# Switch to non-root user
+USER app
+
+# Add local packages to PATH
+ENV PATH=/home/app/.local/bin:$PATH
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5000/api/health || exit 1
+
+EXPOSE 5000
+CMD ["python", "app.py"]
+
+# .dockerignore to reduce build context
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+.nyc_output
+coverage
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.DS_Store
+.vscode
+.idea
+</code></pre>
+<h4 id="ecr-lifecycle-policies">ECR Lifecycle Policies</h4>
+<pre><code># ECR lifecycle policy to manage image retention
+{
+  "rules": [
+    {
+      "rulePriority": 1,
+      "description": "Keep last 10 production images",
+      "selection": {
+        "tagStatus": "tagged",
+        "tagPrefixList": ["prod-"],
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
+      },
+      "action": {
+        "type": "expire"
+      }
+    },
+    {
+      "rulePriority": 2,
+      "description": "Keep last 5 staging images",
+      "selection": {
+        "tagStatus": "tagged",
+        "tagPrefixList": ["staging-"],
+        "countType": "imageCountMoreThan",
+        "countNumber": 5
+      },
+      "action": {
+        "type": "expire"
+      }
+    },
+    {
+      "rulePriority": 3,
+      "description": "Delete untagged images older than 1 day",
+      "selection": {
+        "tagStatus": "untagged",
+        "countType": "sinceImagePushed",
+        "countUnit": "days",
+        "countNumber": 1
+      },
+      "action": {
+        "type": "expire"
+      }
+    }
+  ]
+}
+
+# Apply lifecycle policy
+aws ecr put-lifecycle-policy \
+    --repository-name enterprise-app-backend \
+    --lifecycle-policy-text file://lifecycle-policy.json
+</code></pre>
+<h3 id="automated-resource-scheduling">Automated Resource Scheduling</h3>
+<h4 id="development-environment-scheduling">Development Environment Scheduling</h4>
+<pre><code># Lambda function to start/stop development resources
+import boto3
+import json
+from datetime import datetime
+
+def lambda_handler(event, context):
+    action = event.get('action')  # 'start' or 'stop'
+    environment = event.get('environment', 'development')
+    
+    ecs = boto3.client('ecs')
+    rds = boto3.client('rds')
+    
+    if environment == 'development':
+        cluster_name = 'enterprise-dev-cluster'
+        service_name = 'enterprise-dev-service'
+        db_instance_id = 'enterprise-dev-db'
+        
+        if action == 'stop':
+            # Scale down ECS service
+            ecs.update_service(
+                cluster=cluster_name,
+                service=service_name,
+                desiredCount=0
+            )
+            
+            # Stop RDS instance
+            rds.stop_db_instance(
+                DBInstanceIdentifier=db_instance_id
+            )
+            
+            return {
+                'statusCode': 200,
+                'body': json.dumps(f'Stopped {environment} environment')
+            }
+        
+        elif action == 'start':
+            # Start RDS instance
+            rds.start_db_instance(
+                DBInstanceIdentifier=db_instance_id
+            )
+            
+            # Scale up ECS service
+            ecs.update_service(
+                cluster=cluster_name,
+                service=service_name,
+                desiredCount=2
+            )
+            
+            return {
+                'statusCode': 200,
+                'body': json.dumps(f'Started {environment} environment')
+            }
+    
+    return {
+        'statusCode': 400,
+        'body': json.dumps('Invalid action or environment')
+    }
+
+# EventBridge rules for scheduling
+# Stop development environment at 7 PM weekdays
+aws events put-rule \
+    --name "stop-dev-environment" \
+    --schedule-expression "cron(0 19 ? * MON-FRI *)" \
+    --description "Stop development environment at 7 PM weekdays"
+
+# Start development environment at 8 AM weekdays
+aws events put-rule \
+    --name "start-dev-environment" \
+    --schedule-expression "cron(0 8 ? * MON-FRI *)" \
+    --description "Start development environment at 8 AM weekdays"
+
+# Add Lambda targets
+aws events put-targets \
+    --rule "stop-dev-environment" \
+    --targets "Id"="1","Arn"="arn:aws:lambda:us-east-1:ACCOUNT:function:ResourceScheduler","Input"='{"action":"stop","environment":"development"}'
+
+aws events put-targets \
+    --rule "start-dev-environment" \
+    --targets "Id"="1","Arn"="arn:aws:lambda:us-east-1:ACCOUNT:function:ResourceScheduler","Input"='{"action":"start","environment":"development"}'
+</code></pre>
+<h3 id="cost-allocation-tagging">Cost Allocation & Tagging</h3>
+<h4 id="comprehensive-tagging-strategy">Comprehensive Tagging Strategy</h4>
+<pre><code># Terraform tagging configuration
+locals {
+  common_tags = {
+    Project     = "enterprise-app"
+    Environment = var.environment
+    Owner       = "platform-team"
+    CostCenter  = "engineering"
+    Application = "enterprise-cicd"
+    CreatedBy   = "terraform"
+    CreatedDate = formatdate("YYYY-MM-DD", timestamp())
+  }
+}
+
+# ECS resources with tags
+resource "aws_ecs_cluster" "main" {
+  name = "${var.environment}-enterprise-cluster"
+  
+  tags = merge(local.common_tags, {
+    Name        = "${var.environment}-enterprise-cluster"
+    Service     = "ecs"
+    Component   = "compute"
+  })
+}
+
+resource "aws_ecs_service" "main" {
+  name            = "${var.environment}-enterprise-service"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.main.arn
+  desired_count   = var.desired_count
+  
+  tags = merge(local.common_tags, {
+    Name      = "${var.environment}-enterprise-service"
+    Service   = "ecs"
+    Component = "application"
+  })
+}
+
+# RDS with tags
+resource "aws_db_instance" "main" {
+  identifier     = "${var.environment}-enterprise-db"
+  engine         = "postgres"
+  instance_class = var.db_instance_class
+  
+  tags = merge(local.common_tags, {
+    Name      = "${var.environment}-enterprise-db"
+    Service   = "rds"
+    Component = "database"
+    Backup    = "required"
+  })
+}
+
+# Load balancer with tags
+resource "aws_lb" "main" {
+  name               = "${var.environment}-enterprise-alb"
+  internal           = false
+  load_balancer_type = "application"
+  
+  tags = merge(local.common_tags, {
+    Name      = "${var.environment}-enterprise-alb"
+    Service   = "elb"
+    Component = "networking"
+  })
+}
+</code></pre>
+<h4 id="cost-reporting-dashboard">Cost Reporting Dashboard</h4>
+<pre><code># Python script to generate cost reports
+import boto3
+import pandas as pd
+from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+
+class CostReporter:
+    def __init__(self):
+        self.ce = boto3.client('ce')
+    
+    def get_cost_by_service(self, start_date, end_date):
+        """Get cost breakdown by AWS service"""
+        response = self.ce.get_cost_and_usage(
+            TimePeriod={
+                'Start': start_date.strftime('%Y-%m-%d'),
+                'End': end_date.strftime('%Y-%m-%d')
+            },
+            Granularity='MONTHLY',
+            Metrics=['BlendedCost'],
+            GroupBy=[
+                {
+                    'Type': 'DIMENSION',
+                    'Key': 'SERVICE'
+                }
+            ],
+            Filter={
+                'Tags': {
+                    'Key': 'Project',
+                    'Values': ['enterprise-app']
+                }
+            }
+        )
+        
+        return response['ResultsByTime']
+    
+    def get_cost_by_environment(self, start_date, end_date):
+        """Get cost breakdown by environment"""
+        response = self.ce.get_cost_and_usage(
+            TimePeriod={
+                'Start': start_date.strftime('%Y-%m-%d'),
+                'End': end_date.strftime('%Y-%m-%d')
+            },
+            Granularity='MONTHLY',
+            Metrics=['BlendedCost'],
+            GroupBy=[
+                {
+                    'Type': 'TAG',
+                    'Key': 'Environment'
+                }
+            ],
+            Filter={
+                'Tags': {
+                    'Key': 'Project',
+                    'Values': ['enterprise-app']
+                }
+            }
+        )
+        
+        return response['ResultsByTime']
+    
+    def generate_cost_report(self):
+        """Generate comprehensive cost report"""
+        end_date = datetime.now().replace(day=1)  # First day of current month
+        start_date = (end_date - timedelta(days=90)).replace(day=1)  # 3 months ago
+        
+        # Get cost data
+        service_costs = self.get_cost_by_service(start_date, end_date)
+        environment_costs = self.get_cost_by_environment(start_date, end_date)
+        
+        # Process data for visualization
+        service_data = []
+        for result in service_costs:
+            for group in result['Groups']:
+                service_data.append({
+                    'period': result['TimePeriod']['Start'],
+                    'service': group['Keys'][0],
+                    'cost': float(group['Metrics']['BlendedCost']['Amount'])
+                })
+        
+        environment_data = []
+        for result in environment_costs:
+            for group in result['Groups']:
+                environment_data.append({
+                    'period': result['TimePeriod']['Start'],
+                    'environment': group['Keys'][0],
+                    'cost': float(group['Metrics']['BlendedCost']['Amount'])
+                })
+        
+        # Create DataFrames
+        service_df = pd.DataFrame(service_data)
+        environment_df = pd.DataFrame(environment_data)
+        
+        # Generate visualizations
+        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+        
+        # Service cost breakdown
+        if not service_df.empty:
+            service_totals = service_df.groupby('service')['cost'].sum().sort_values(ascending=False)
+            ax1.pie(service_totals.values, labels=service_totals.index, autopct='%1.1f%%')
+            ax1.set_title('Cost by AWS Service')
+        
+        # Environment cost breakdown
+        if not environment_df.empty:
+            env_totals = environment_df.groupby('environment')['cost'].sum()
+            ax2.bar(env_totals.index, env_totals.values)
+            ax2.set_title('Cost by Environment')
+            ax2.set_ylabel('Cost ($)')
+        
+        # Cost trend over time
+        if not service_df.empty:
+            monthly_costs = service_df.groupby('period')['cost'].sum()
+            ax3.plot(monthly_costs.index, monthly_costs.values, marker='o')
+            ax3.set_title('Monthly Cost Trend')
+            ax3.set_ylabel('Cost ($)')
+            ax3.tick_params(axis='x', rotation=45)
+        
+        # Top 5 services by cost
+        if not service_df.empty:
+            top_services = service_df.groupby('service')['cost'].sum().nlargest(5)
+            ax4.barh(top_services.index, top_services.values)
+            ax4.set_title('Top 5 Services by Cost')
+            ax4.set_xlabel('Cost ($)')
+        
+        plt.tight_layout()
+        plt.savefig('cost_report.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        return {
+            'service_costs': service_df,
+            'environment_costs': environment_df,
+            'total_cost': service_df['cost'].sum() if not service_df.empty else 0
+        }
+
+# Usage
+reporter = CostReporter()
+report = reporter.generate_cost_report()
+print(f"Total cost for last 3 months: ${report['total_cost']:.2f}")
+</code></pre>
+<h3 id="spot-reserved-instances">Spot & Reserved Instances</h3>
+<h4 id="fargate-spot-configuration">Fargate Spot Configuration</h4>
+<pre><code># ECS service with Fargate Spot
+resource "aws_ecs_service" "main" {
+  name            = "enterprise-service"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.main.arn
+  desired_count   = 4
+  
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE_SPOT"
+    weight           = 80
+    base             = 2
+  }
+  
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE"
+    weight           = 20
+  }
+  
+  deployment_configuration {
+    maximum_percent         = 200
+    minimum_healthy_percent = 100
+  }
+}
+
+# Task definition optimized for Spot
+resource "aws_ecs_task_definition" "main" {
+  family                   = "enterprise-app"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  cpu                      = "256"
+  memory                   = "512"
+  execution_role_arn       = aws_iam_role.ecs_execution_role.arn
+  task_role_arn           = aws_iam_role.ecs_task_role.arn
+  
+  container_definitions = jsonencode([
+    {
+      name  = "backend"
+      image = "${aws_ecr_repository.backend.repository_url}:latest"
+      
+      # Graceful shutdown handling for Spot interruptions
+      stopTimeout = 30
+      
+      portMappings = [
+        {
+          containerPort = 5000
+          protocol      = "tcp"
+        }
+      ]
+      
+      healthCheck = {
+        command     = ["CMD-SHELL", "curl -f http://localhost:5000/api/health || exit 1"]
+        interval    = 30
+        timeout     = 5
+        retries     = 3
+        startPeriod = 60
+      }
+      
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = aws_cloudwatch_log_group.app.name
+          "awslogs-region"        = var.aws_region
+          "awslogs-stream-prefix" = "ecs"
+        }
+      }
+    }
+  ])
+}
+</code></pre>
+<h4 id="reserved-instance-recommendations">Reserved Instance Recommendations</h4>
+<pre><code># Python script to analyze RI recommendations
+import boto3
+import json
+from datetime import datetime, timedelta
+
+class RIRecommendationAnalyzer:
+    def __init__(self):
+        self.ce = boto3.client('ce')
+    
+    def get_ri_recommendations(self, service='Amazon Relational Database Service'):
+        """Get Reserved Instance recommendations"""
+        response = self.ce.get_reservation_purchase_recommendation(
+            Service=service,
+            PaymentOption='PARTIAL_UPFRONT',
+            TermInYears='ONE_YEAR',
+            LookbackPeriodInDays='SIXTY_DAYS'
+        )
+        
+        return response.get('Recommendations', [])
+    
+    def analyze_savings_opportunity(self):
+        """Analyze potential savings from Reserved Instances"""
+        services = [
+            'Amazon Relational Database Service',
+            'Amazon Elastic Compute Cloud - Compute'
+        ]
+        
+        total_savings = 0
+        recommendations = []
+        
+        for service in services:
+            service_recommendations = self.get_ri_recommendations(service)
+            
+            for rec in service_recommendations:
+                details = rec.get('RecommendationDetails', {})
+                
+                estimated_monthly_savings = float(
+                    details.get('EstimatedMonthlySavingsAmount', 0)
+                )
+                
+                upfront_cost = float(
+                    details.get('UpfrontCost', 0)
+                )
+                
+                instance_details = details.get('InstanceDetails', {})
+                
+                recommendation = {
+                    'service': service,
+                    'instance_type': instance_details.get('InstanceType', 'Unknown'),
+                    'region': instance_details.get('Region', 'Unknown'),
+                    'estimated_monthly_savings': estimated_monthly_savings,
+                    'estimated_annual_savings': estimated_monthly_savings * 12,
+                    'upfront_cost': upfront_cost,
+                    'payback_months': upfront_cost / estimated_monthly_savings if estimated_monthly_savings > 0 else 0,
+                    'recommended_instances': details.get('RecommendedNumberOfInstancesToPurchase', 0)
+                }
+                
+                recommendations.append(recommendation)
+                total_savings += estimated_monthly_savings * 12
+        
+        return {
+            'total_annual_savings': total_savings,
+            'recommendations': recommendations
+        }
+    
+    def generate_ri_report(self):
+        """Generate Reserved Instance recommendation report"""
+        analysis = self.analyze_savings_opportunity()
+        
+        print("Reserved Instance Recommendations Report")
+        print("=" * 50)
+        print(f"Total Estimated Annual Savings: ${analysis['total_annual_savings']:.2f}")
+        print("\nDetailed Recommendations:")
+        
+        for i, rec in enumerate(analysis['recommendations'], 1):
+            print(f"\n{i}. {rec['service']}")
+            print(f"   Instance Type: {rec['instance_type']}")
+            print(f"   Region: {rec['region']}")
+            print(f"   Recommended Instances: {rec['recommended_instances']}")
+            print(f"   Monthly Savings: ${rec['estimated_monthly_savings']:.2f}")
+            print(f"   Annual Savings: ${rec['estimated_annual_savings']:.2f}")
+            print(f"   Upfront Cost: ${rec['upfront_cost']:.2f}")
+            print(f"   Payback Period: {rec['payback_months']:.1f} months")
+        
+        return analysis
+
+# Usage
+analyzer = RIRecommendationAnalyzer()
+report = analyzer.generate_ri_report()
+</code></pre>
+	
+  
+        
+        </div> 
+        
+
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-prev" href="../8-deployment-strategies/" title="Deployment Strategies"><i class="fa fa-chevron-left"></i></a>
+		
+	
+	 
+	 
+		
+		
+			<a class="nav nav-next" href="../10-cleanup/" title="Clean Up Resources" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1754917932"></script>
+    <script src="../js/jquery.sticky.js?1754917932"></script>
+    <script src="../js/featherlight.min.js?1754917932"></script>
+    <script src="../js/highlight.pack.js?1754917932"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1754917932"></script>
+    <script src="../js/learn.js?1754917932"></script>
+    <script src="../js/hugo-learn.js?1754917932"></script>
+
+    <link href="../mermaid/mermaid.css?1754917932" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1754917932"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.1">
+    <meta name="description" content="">
+<meta name="author" content="whatdadogdoing@gmail.com">
+
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <title>Module 6: Security & Compliance :: Enterprise CI/CD Pipeline Workshop</title>
+
+    
+    <link href="../css/nucleus.css?1754917932" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1754917932" rel="stylesheet">
+    <link href="../css/hybrid.css?1754917932" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1754917932" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1754917932" rel="stylesheet">
+    <link href="../css/auto-complete.css?1754917932" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1754917932" rel="stylesheet">
+    <link href="../css/theme.css?1754917932" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1754917932" rel="stylesheet">
+    
+    <link href="../css/theme-workshop.css?1754917932" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1754917932"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../6-security-compliance/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="../">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1754917932"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1754917932"></script>
+<script type="text/javascript">
+    
+        var baseurl = "../";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1754917932"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../1-environment-setup/" title="Environment Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../1-environment-setup/">
+           <b> 1. </b> Environment Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../2-application-overview/" title="Application Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../2-application-overview/">
+           <b> 2. </b> Application Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../3-containerization/" title="Containerization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../3-containerization/">
+           <b> 3. </b> Containerization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../4-cicd-pipeline/" title="CI/CD Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../4-cicd-pipeline/">
+           <b> 4. </b> CI/CD Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../5-aws-infrastructure/" title="AWS Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../5-aws-infrastructure/">
+           <b> 5. </b> AWS Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../6-security-compliance/" title="Security & Compliance" class="dd-item active
+        
+        
+        
+        ">
+      <a href="../6-security-compliance/">
+           <b> 6. </b> Security & Compliance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../7-monitoring/" title="Monitoring" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../7-monitoring/">
+           <b> 7. </b> Monitoring
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../8-deployment-strategies/" title="Deployment Strategies" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../8-deployment-strategies/">
+           <b> 8. </b> Deployment Strategies
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../9-cost-optimization/" title="Cost Optimization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../9-cost-optimization/">
+           <b> 9. </b> Cost Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../10-cleanup/" title="Clean Up Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../10-cleanup/">
+           <b> 10. </b> Clean Up Resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/whatdadogdoing/workshop_fcj"><i class='fab fa-github'></i> GitHub Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="../" selected>English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>28-07-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://github.com/whatdadogdoing"  style="color:orange">whatdadogdoing </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+
+        
+
+<span id="sidebar-toggle-span">
+<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
+</span>
+
+ 
+<h1 id="module-6-security-compliance">Module 6: Security & Compliance</h1>
+<h3 id="overview">Overview</h3>
+<p>Implement comprehensive security best practices and compliance measures for the CI/CD pipeline and AWS infrastructure.</p>
+<p><img src="../images/06-security-architecture.png" alt="Security Architecture"></p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Implement container image vulnerability scanning</li>
+<li>Configure AWS security services (GuardDuty, Security Hub)</li>
+<li>Set up secrets management with AWS Secrets Manager</li>
+<li>Implement network security with VPC and security groups</li>
+<li>Configure compliance monitoring and reporting</li>
+<li>Set up encryption at rest and in transit</li>
+</ul>
+<h3 id="security-scanning">Security Scanning</h3>
+<h4 id="container-vulnerability-scanning">Container Vulnerability Scanning</h4>
+<pre><code># Add to GitHub Actions workflow
+- name: Run Trivy vulnerability scanner
+  uses: aquasecurity/trivy-action@master
+  with:
+    image-ref: '${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}'
+    format: 'sarif'
+    output: 'trivy-results.sarif'
+
+- name: Upload Trivy scan results to GitHub Security tab
+  uses: github/codeql-action/upload-sarif@v2
+  with:
+    sarif_file: 'trivy-results.sarif'
+
+# OWASP Dependency Check
+- name: Run OWASP Dependency Check
+  uses: dependency-check/Dependency-Check_Action@main
+  with:
+    project: 'enterprise-app'
+    path: '.'
+    format: 'ALL'
+    args: >
+      --enableRetired
+      --enableExperimental
+      --nvdApiKey ${{ secrets.NVD_API_KEY }}
+</code></pre>
+<h4 id="sonarcloud-code-quality">SonarCloud Code Quality</h4>
+<pre><code># Add to workflow
+- name: SonarCloud Scan
+  uses: SonarSource/sonarcloud-github-action@master
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  with:
+    args: >
+      -Dsonar.projectKey=enterprise-cicd-workshop
+      -Dsonar.organization=your-org
+      -Dsonar.sources=.
+      -Dsonar.exclusions=**/*.test.js,**/node_modules/**
+      -Dsonar.coverage.exclusions=**/*.test.js
+</code></pre>
+<h3 id="aws-security-services">AWS Security Services</h3>
+<h4 id="guardduty-setup">GuardDuty Setup</h4>
+<pre><code># Enable GuardDuty
+aws guardduty create-detector \
+    --enable \
+    --finding-publishing-frequency FIFTEEN_MINUTES
+
+# Create custom threat intelligence set
+aws guardduty create-threat-intel-set \
+    --detector-id 12abc34d567e8fa901bc2d34e56789f0 \
+    --name "Custom-Threat-Intel" \
+    --format TXT \
+    --location s3://my-bucket/threat-intel.txt \
+    --activate
+</code></pre>
+<h4 id="security-hub-configuration">Security Hub Configuration</h4>
+<pre><code># Enable Security Hub
+aws securityhub enable-security-hub \
+    --enable-default-standards
+
+# Subscribe to security standards
+aws securityhub batch-enable-standards \
+    --standards-subscription-requests StandardsArn=arn:aws:securityhub:::ruleset/finding-format/aws-foundational-security-standard/v/1.0.0
+
+# Create custom insights
+aws securityhub create-insight \
+    --name "High Severity Findings" \
+    --filters '{"SeverityLabel": [{"Value": "HIGH", "Comparison": "EQUALS"}]}' \
+    --group-by-attribute "Type"
+</code></pre>
+<h3 id="secrets-management">Secrets Management</h3>
+<h4 id="aws-secrets-manager">AWS Secrets Manager</h4>
+<pre><code># Create database secret
+aws secretsmanager create-secret \
+    --name "enterprise-app/database" \
+    --description "Database credentials for enterprise app" \
+    --secret-string '{
+        "username": "admin",
+        "password": "SecurePassword123!",
+        "engine": "postgres",
+        "host": "enterprise-db.cluster-xyz.us-east-1.rds.amazonaws.com",
+        "port": 5432,
+        "dbname": "enterprise_app"
+    }'
+
+# Create API keys secret
+aws secretsmanager create-secret \
+    --name "enterprise-app/api-keys" \
+    --description "API keys for external services" \
+    --secret-string '{
+        "sonar_token": "sqp_1234567890abcdef",
+        "github_token": "ghp_abcdef1234567890",
+        "slack_webhook": "https://hooks.slack.com/services/..."
+    }'
+</code></pre>
+<h4 id="ecs-secrets-integration">ECS Secrets Integration</h4>
+<pre><code># Task definition with secrets
+{
+  "family": "enterprise-app",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::ACCOUNT:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/enterprise-app-backend:latest",
+      "secrets": [
+        {
+          "name": "DATABASE_URL",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT:secret:enterprise-app/database:username::"
+        },
+        {
+          "name": "API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT:secret:enterprise-app/api-keys:sonar_token::"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/enterprise-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<h3 id="network-security">Network Security</h3>
+<p><img src="../images/09-network-security.png" alt="Network Security Architecture"></p>
+<h4 id="vpc-security-groups">VPC & Security Groups</h4>
+<pre><code># Terraform configuration
+resource "aws_vpc" "main" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "enterprise-vpc"
+  }
+}
+
+resource "aws_security_group" "alb" {
+  name_prefix = "enterprise-alb-"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "ecs" {
+  name_prefix = "enterprise-ecs-"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port       = 5000
+    to_port         = 5000
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "rds" {
+  name_prefix = "enterprise-rds-"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port       = 5432
+    to_port         = 5432
+    protocol        = "tcp"
+    security_groups = [aws_security_group.ecs.id]
+  }
+}
+</code></pre>
+<h3 id="encryption">Encryption</h3>
+<h4 id="encryption-at-rest">Encryption at Rest</h4>
+<pre><code># RDS encryption
+resource "aws_db_instance" "main" {
+  identifier     = "enterprise-db"
+  engine         = "postgres"
+  instance_class = "db.t3.micro"
+  
+  storage_encrypted = true
+  kms_key_id       = aws_kms_key.rds.arn
+  
+  backup_retention_period = 7
+  backup_window          = "03:00-04:00"
+  maintenance_window     = "sun:04:00-sun:05:00"
+}
+
+# S3 bucket encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "artifacts" {
+  bucket = aws_s3_bucket.artifacts.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = aws_kms_key.s3.arn
+      sse_algorithm     = "aws:kms"
+    }
+    bucket_key_enabled = true
+  }
+}
+
+# EBS encryption
+resource "aws_ebs_encryption_by_default" "main" {
+  enabled = true
+}
+</code></pre>
+<h4 id="encryption-in-transit">Encryption in Transit</h4>
+<pre><code># ALB with SSL/TLS
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
+  certificate_arn   = aws_acm_certificate.main.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.backend.arn
+  }
+}
+
+# Force HTTPS redirect
+resource "aws_lb_listener" "http_redirect" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+</code></pre>
+<h3 id="compliance-monitoring">Compliance Monitoring</h3>
+<h4 id="aws-config">AWS Config</h4>
+<pre><code># Enable Config
+aws configservice put-configuration-recorder \
+    --configuration-recorder name=default,roleARN=arn:aws:iam::ACCOUNT:role/aws-config-role \
+    --recording-group allSupported=true,includeGlobalResourceTypes=true
+
+aws configservice put-delivery-channel \
+    --delivery-channel name=default,s3BucketName=enterprise-config-bucket
+
+aws configservice start-configuration-recorder \
+    --configuration-recorder-name default
+
+# Deploy compliance rules
+aws configservice put-config-rule \
+    --config-rule '{
+        "ConfigRuleName": "encrypted-volumes",
+        "Source": {
+            "Owner": "AWS",
+            "SourceIdentifier": "ENCRYPTED_VOLUMES"
+        }
+    }'
+</code></pre>
+<h4 id="cloudtrail-logging">CloudTrail Logging</h4>
+<pre><code># Create CloudTrail
+aws cloudtrail create-trail \
+    --name enterprise-audit-trail \
+    --s3-bucket-name enterprise-cloudtrail-logs \
+    --include-global-service-events \
+    --is-multi-region-trail \
+    --enable-log-file-validation
+
+aws cloudtrail start-logging \
+    --name enterprise-audit-trail
+
+# Create log insights for security analysis
+aws logs create-log-group \
+    --log-group-name /aws/cloudtrail/enterprise
+
+# Sample CloudWatch Insights query
+# fields @timestamp, sourceIPAddress, userIdentity.type, eventName
+# | filter eventName like /Delete/
+# | stats count() by sourceIPAddress
+# | sort count desc
+</code></pre>
+
+<h3 id="iam-security">IAM Security Best Practices</h3>
+<h4 id="least-privilege-policies">Least Privilege IAM Policies</h4>
+<pre><code># ECS Task Role with minimal permissions
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:aws:secretsmanager:us-east-1:ACCOUNT:secret:enterprise-app/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::enterprise-app-uploads/*"
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="security-automation">Security Automation</h3>
+<h4 id="automated-remediation">Automated Security Remediation</h4>
+<pre><code># Lambda function for automated remediation
+import boto3
+import json
+
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2')
+    
+    # Parse Security Hub finding
+    finding = json.loads(event['Records'][0]['Sns']['Message'])
+    
+    if finding['ProductFields']['aws/inspector/RuleName'] == 'Security groups should not allow unrestricted access to port 22':
+        security_group_id = finding['Resources'][0]['Id'].split('/')[-1]
+        
+        # Remove unrestricted SSH access
+        ec2.revoke_security_group_ingress(
+            GroupId=security_group_id,
+            IpPermissions=[
+                {
+                    'IpProtocol': 'tcp',
+                    'FromPort': 22,
+                    'ToPort': 22,
+                    'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+                }
+            ]
+        )
+        
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Remediation completed')
+    }
+</code></pre>
+	
+  
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+                    
+                    
+                        
+                    
+                    
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                        
+                    
+                    
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                        
+                    
+                    
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                        
+                    
+                    
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                    
+                    
+                    
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+		
+		
+			<a class="nav nav-prev" href="../5-aws-infrastructure/" title="AWS Infrastructure"><i class="fa fa-chevron-left"></i></a>
+		
+	
+	 
+	 
+		
+		
+		
+			<a class="nav nav-next" href="../7-monitoring/" title="Monitoring" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1754917932"></script>
+    <script src="../js/jquery.sticky.js?1754917932"></script>
+    <script src="../js/featherlight.min.js?1754917932"></script>
+    <script src="../js/highlight.pack.js?1754917932"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1754917932"></script>
+    <script src="../js/learn.js?1754917932"></script>
+    <script src="../js/hugo-learn.js?1754917932"></script>
+
+    <link href="../mermaid/mermaid.css?1754917932" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1754917932"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

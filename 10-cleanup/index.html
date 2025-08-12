@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.1">
+    <meta name="description" content="">
+<meta name="author" content="whatdadogdoing@gmail.com">
+
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+
+    <title>Module 10: Clean Up Resources :: Enterprise CI/CD Pipeline Workshop</title>
+
+    
+    <link href="../css/nucleus.css?1754917932" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1754917932" rel="stylesheet">
+    <link href="../css/hybrid.css?1754917932" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1754917932" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1754917932" rel="stylesheet">
+    <link href="../css/auto-complete.css?1754917932" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1754917932" rel="stylesheet">
+    <link href="../css/theme.css?1754917932" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1754917932" rel="stylesheet">
+    
+    <link href="../css/theme-workshop.css?1754917932" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1754917932"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../10-cleanup/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="../">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1754917932"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1754917932"></script>
+<script type="text/javascript">
+    
+        var baseurl = "../";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1754917932"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../1-environment-setup/" title="Environment Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../1-environment-setup/">
+           <b> 1. </b> Environment Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../2-application-overview/" title="Application Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../2-application-overview/">
+           <b> 2. </b> Application Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../3-containerization/" title="Containerization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../3-containerization/">
+           <b> 3. </b> Containerization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../4-cicd-pipeline/" title="CI/CD Pipeline" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../4-cicd-pipeline/">
+           <b> 4. </b> CI/CD Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../5-aws-infrastructure/" title="AWS Infrastructure" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../5-aws-infrastructure/">
+           <b> 5. </b> AWS Infrastructure
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../6-security-compliance/" title="Security & Compliance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../6-security-compliance/">
+           <b> 6. </b> Security & Compliance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../7-monitoring/" title="Monitoring" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../7-monitoring/">
+           <b> 7. </b> Monitoring
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../8-deployment-strategies/" title="Deployment Strategies" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../8-deployment-strategies/">
+           <b> 8. </b> Deployment Strategies
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../9-cost-optimization/" title="Cost Optimization" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../9-cost-optimization/">
+           <b> 9. </b> Cost Optimization
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="../10-cleanup/" title="Clean Up Resources" class="dd-item active
+        
+        
+        
+        ">
+      <a href="../10-cleanup/">
+           <b> 10. </b> Clean Up Resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/whatdadogdoing/workshop_fcj"><i class='fab fa-github'></i> GitHub Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="../" selected>English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>28-07-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://github.com/whatdadogdoing"  style="color:orange">whatdadogdoing </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+
+        
+
+<span id="sidebar-toggle-span">
+<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
+</span>
+
+ 
+<h1 id="module-10-clean-up-resources">Module 10: Clean Up Resources</h1>
+<h3 id="overview">Overview</h3>
+<p>Clean up all AWS resources created during this workshop to avoid ongoing charges and maintain good cloud hygiene practices. This module provides comprehensive cleanup procedures and automation scripts.</p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Systematically delete all workshop resources</li>
+<li>Verify complete resource cleanup</li>
+<li>Understand cost implications of resource retention</li>
+<li>Implement automated cleanup procedures</li>
+<li>Create cleanup validation scripts</li>
+</ul>
+<h3 id="pre-cleanup-verification">Pre-Cleanup Verification</h3>
+<h4 id="resource-inventory">Resource Inventory</h4>
+<pre><code># Python script to inventory all workshop resources
+import boto3
+import json
+from datetime import datetime
+
+class ResourceInventory:
+    def __init__(self):
+        self.ecs = boto3.client('ecs')
+        self.ecr = boto3.client('ecr')
+        self.rds = boto3.client('rds')
+        self.elbv2 = boto3.client('elbv2')
+        self.ec2 = boto3.client('ec2')
+        self.logs = boto3.client('logs')
+        self.iam = boto3.client('iam')
+        self.s3 = boto3.client('s3')
+        self.codedeploy = boto3.client('codedeploy')
+        self.cloudwatch = boto3.client('cloudwatch')
+        
+    def get_tagged_resources(self, tag_key='Project', tag_value='enterprise-app'):
+        """Get all resources with specific tags"""
+        resource_groups = boto3.client('resourcegroupstaggingapi')
+        
+        response = resource_groups.get_resources(
+            TagFilters=[
+                {
+                    'Key': tag_key,
+                    'Values': [tag_value]
+                }
+            ]
+        )
+        
+        return response.get('ResourceTagMappingList', [])
+    
+    def inventory_ecs_resources(self):
+        """Inventory ECS clusters, services, and tasks"""
+        resources = []
+        
+        # List clusters
+        clusters = self.ecs.list_clusters()['clusterArns']
+        for cluster_arn in clusters:
+            if 'enterprise' in cluster_arn:
+                cluster_name = cluster_arn.split('/')[-1]
+                resources.append({
+                    'type': 'ECS Cluster',
+                    'name': cluster_name,
+                    'arn': cluster_arn
+                })
+                
+                # List services in cluster
+                services = self.ecs.list_services(cluster=cluster_arn)['serviceArns']
+                for service_arn in services:
+                    service_name = service_arn.split('/')[-1]
+                    resources.append({
+                        'type': 'ECS Service',
+                        'name': service_name,
+                        'arn': service_arn,
+                        'cluster': cluster_name
+                    })
+        
+        return resources
+    
+    def inventory_ecr_repositories(self):
+        """Inventory ECR repositories"""
+        resources = []
+        
+        repositories = self.ecr.describe_repositories()['repositories']
+        for repo in repositories:
+            if 'enterprise' in repo['repositoryName']:
+                resources.append({
+                    'type': 'ECR Repository',
+                    'name': repo['repositoryName'],
+                    'arn': repo['repositoryArn'],
+                    'uri': repo['repositoryUri']
+                })
+        
+        return resources
+    
+    def inventory_rds_resources(self):
+        """Inventory RDS instances and snapshots"""
+        resources = []
+        
+        # DB Instances
+        instances = self.rds.describe_db_instances()['DBInstances']
+        for instance in instances:
+            if 'enterprise' in instance['DBInstanceIdentifier']:
+                resources.append({
+                    'type': 'RDS Instance',
+                    'name': instance['DBInstanceIdentifier'],
+                    'arn': instance['DBInstanceArn'],
+                    'status': instance['DBInstanceStatus']
+                })
+        
+        # DB Snapshots
+        snapshots = self.rds.describe_db_snapshots()['DBSnapshots']
+        for snapshot in snapshots:
+            if 'enterprise' in snapshot['DBSnapshotIdentifier']:
+                resources.append({
+                    'type': 'RDS Snapshot',
+                    'name': snapshot['DBSnapshotIdentifier'],
+                    'arn': snapshot['DBSnapshotArn'],
+                    'status': snapshot['Status']
+                })
+        
+        return resources
+    
+    def inventory_load_balancers(self):
+        """Inventory Application Load Balancers"""
+        resources = []
+        
+        load_balancers = self.elbv2.describe_load_balancers()['LoadBalancers']
+        for lb in load_balancers:
+            if 'enterprise' in lb['LoadBalancerName']:
+                resources.append({
+                    'type': 'Application Load Balancer',
+                    'name': lb['LoadBalancerName'],
+                    'arn': lb['LoadBalancerArn'],
+                    'dns_name': lb['DNSName']
+                })
+                
+                # Get target groups
+                target_groups = self.elbv2.describe_target_groups(
+                    LoadBalancerArn=lb['LoadBalancerArn']
+                )['TargetGroups']
+                
+                for tg in target_groups:
+                    resources.append({
+                        'type': 'Target Group',
+                        'name': tg['TargetGroupName'],
+                        'arn': tg['TargetGroupArn'],
+                        'load_balancer': lb['LoadBalancerName']
+                    })
+        
+        return resources
+    
+    def generate_inventory_report(self):
+        """Generate complete resource inventory"""
+        inventory = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'resources': {
+                'ecs': self.inventory_ecs_resources(),
+                'ecr': self.inventory_ecr_repositories(),
+                'rds': self.inventory_rds_resources(),
+                'load_balancers': self.inventory_load_balancers()
+            }
+        }
+        
+        # Add tagged resources
+        inventory['tagged_resources'] = self.get_tagged_resources()
+        
+        # Calculate total resource count
+        total_resources = sum(len(resources) for resources in inventory['resources'].values())
+        inventory['total_resources'] = total_resources
+        
+        return inventory
+
+# Usage
+inventory = ResourceInventory()
+report = inventory.generate_inventory_report()
+
+print(f"Total resources found: {report['total_resources']}")
+print(json.dumps(report, indent=2, default=str))
+</code></pre>
+<h3 id="systematic-cleanup-procedure">Systematic Cleanup Procedure</h3>
+<h4 id="step-1-ecs-resources">Step 1: ECS Resources</h4>
+<pre><code># Complete ECS cleanup script
+#!/bin/bash
+
+set -e
+
+echo "Starting ECS resource cleanup..."
+
+# Function to wait for service to scale down
+wait_for_service_stable() {
+    local cluster=$1
+    local service=$2
+    
+    echo "Waiting for service $service to become stable..."
+    aws ecs wait services-stable --cluster $cluster --services $service
+}
+
+# Function to delete ECS service
+delete_ecs_service() {
+    local cluster=$1
+    local service=$2
+    
+    echo "Scaling down service: $service"
+    aws ecs update-service \
+        --cluster $cluster \
+        --service $service \
+        --desired-count 0
+    
+    wait_for_service_stable $cluster $service
+    
+    echo "Deleting service: $service"
+    aws ecs delete-service \
+        --cluster $cluster \
+        --service $service
+    
+    echo "Waiting for service deletion..."
+    aws ecs wait services-inactive --cluster $cluster --services $service
+}
+
+# Get all enterprise clusters
+CLUSTERS=$(aws ecs list-clusters --query 'clusterArns[?contains(@, `enterprise`)]' --output text)
+
+for CLUSTER_ARN in $CLUSTERS; do
+    CLUSTER_NAME=$(echo $CLUSTER_ARN | cut -d'/' -f2)
+    echo "Processing cluster: $CLUSTER_NAME"
+    
+    # Get all services in cluster
+    SERVICES=$(aws ecs list-services --cluster $CLUSTER_ARN --query 'serviceArns' --output text)
+    
+    for SERVICE_ARN in $SERVICES; do
+        SERVICE_NAME=$(echo $SERVICE_ARN | cut -d'/' -f3)
+        delete_ecs_service $CLUSTER_NAME $SERVICE_NAME
+    done
+    
+    # Delete task definitions
+    TASK_DEFINITIONS=$(aws ecs list-task-definitions --family-prefix enterprise --query 'taskDefinitionArns' --output text)
+    
+    for TASK_DEF_ARN in $TASK_DEFINITIONS; do
+        echo "Deregistering task definition: $TASK_DEF_ARN"
+        aws ecs deregister-task-definition --task-definition $TASK_DEF_ARN
+    done
+    
+    # Delete cluster
+    echo "Deleting cluster: $CLUSTER_NAME"
+    aws ecs delete-cluster --cluster $CLUSTER_ARN
+done
+
+echo "ECS cleanup completed!"
+</code></pre>
+<h4 id="step-2-load-balancer-cleanup">Step 2: Load Balancer Cleanup</h4>
+<pre><code># Load balancer cleanup script
+#!/bin/bash
+
+set -e
+
+echo "Starting Load Balancer cleanup..."
+
+# Get all enterprise load balancers
+LOAD_BALANCERS=$(aws elbv2 describe-load-balancers \
+    --query 'LoadBalancers[?contains(LoadBalancerName, `enterprise`)].LoadBalancerArn' \
+    --output text)
+
+for LB_ARN in $LOAD_BALANCERS; do
+    LB_NAME=$(aws elbv2 describe-load-balancers \
+        --load-balancer-arns $LB_ARN \
+        --query 'LoadBalancers[0].LoadBalancerName' \
+        --output text)
+    
+    echo "Processing load balancer: $LB_NAME"
+    
+    # Get listeners
+    LISTENERS=$(aws elbv2 describe-listeners \
+        --load-balancer-arn $LB_ARN \
+        --query 'Listeners[].ListenerArn' \
+        --output text)
+    
+    # Delete listeners
+    for LISTENER_ARN in $LISTENERS; do
+        echo "Deleting listener: $LISTENER_ARN"
+        aws elbv2 delete-listener --listener-arn $LISTENER_ARN
+    done
+    
+    # Get target groups
+    TARGET_GROUPS=$(aws elbv2 describe-target-groups \
+        --load-balancer-arn $LB_ARN \
+        --query 'TargetGroups[].TargetGroupArn' \
+        --output text)
+    
+    # Delete load balancer
+    echo "Deleting load balancer: $LB_NAME"
+    aws elbv2 delete-load-balancer --load-balancer-arn $LB_ARN
+    
+    # Wait for load balancer deletion
+    echo "Waiting for load balancer deletion..."
+    aws elbv2 wait load-balancer-not-exists --load-balancer-arns $LB_ARN
+    
+    # Delete target groups
+    for TG_ARN in $TARGET_GROUPS; do
+        echo "Deleting target group: $TG_ARN"
+        aws elbv2 delete-target-group --target-group-arn $TG_ARN || true
+    done
+done
+
+echo "Load Balancer cleanup completed!"
+</code></pre>
+<h4 id="step-3-rds-cleanup">Step 3: RDS Cleanup</h4>
+<pre><code># RDS cleanup script
+#!/bin/bash
+
+set -e
+
+echo "Starting RDS cleanup..."
+
+# Get all enterprise RDS instances
+DB_INSTANCES=$(aws rds describe-db-instances \
+    --query 'DBInstances[?contains(DBInstanceIdentifier, `enterprise`)].DBInstanceIdentifier' \
+    --output text)
+
+for DB_INSTANCE in $DB_INSTANCES; do
+    echo "Processing RDS instance: $DB_INSTANCE"
+    
+    # Check if instance exists and get status
+    DB_STATUS=$(aws rds describe-db-instances \
+        --db-instance-identifier $DB_INSTANCE \
+        --query 'DBInstances[0].DBInstanceStatus' \
+        --output text 2>/dev/null || echo "not-found")
+    
+    if [ "$DB_STATUS" != "not-found" ]; then
+        echo "Current status: $DB_STATUS"
+        
+        # Create final snapshot before deletion
+        SNAPSHOT_ID="${DB_INSTANCE}-final-snapshot-$(date +%Y%m%d%H%M%S)"
+        echo "Creating final snapshot: $SNAPSHOT_ID"
+        
+        aws rds create-db-snapshot \
+            --db-instance-identifier $DB_INSTANCE \
+            --db-snapshot-identifier $SNAPSHOT_ID
+        
+        # Wait for snapshot to complete
+        echo "Waiting for snapshot to complete..."
+        aws rds wait db-snapshot-completed --db-snapshot-identifier $SNAPSHOT_ID
+        
+        # Delete RDS instance
+        echo "Deleting RDS instance: $DB_INSTANCE"
+        aws rds delete-db-instance \
+            --db-instance-identifier $DB_INSTANCE \
+            --skip-final-snapshot \
+            --delete-automated-backups
+        
+        # Wait for deletion
+        echo "Waiting for RDS instance deletion..."
+        aws rds wait db-instance-deleted --db-instance-identifier $DB_INSTANCE
+    fi
+done
+
+# Clean up old snapshots (keep only final snapshots)
+echo "Cleaning up old snapshots..."
+OLD_SNAPSHOTS=$(aws rds describe-db-snapshots \
+    --query 'DBSnapshots[?contains(DBSnapshotIdentifier, `enterprise`) && !contains(DBSnapshotIdentifier, `final-snapshot`)].DBSnapshotIdentifier' \
+    --output text)
+
+for SNAPSHOT in $OLD_SNAPSHOTS; do
+    echo "Deleting old snapshot: $SNAPSHOT"
+    aws rds delete-db-snapshot --db-snapshot-identifier $SNAPSHOT || true
+done
+
+echo "RDS cleanup completed!"
+</code></pre>
+<h4 id="step-4-ecr-cleanup">Step 4: ECR Cleanup</h4>
+<pre><code># ECR cleanup script
+#!/bin/bash
+
+set -e
+
+echo "Starting ECR cleanup..."
+
+# Get all enterprise ECR repositories
+REPOSITORIES=$(aws ecr describe-repositories \
+    --query 'repositories[?contains(repositoryName, `enterprise`)].repositoryName' \
+    --output text)
+
+for REPO in $REPOSITORIES; do
+    echo "Processing ECR repository: $REPO"
+    
+    # List all images in repository
+    IMAGES=$(aws ecr list-images --repository-name $REPO --query 'imageIds' --output json)
+    
+    if [ "$IMAGES" != "[]" ]; then
+        echo "Deleting all images in repository: $REPO"
+        aws ecr batch-delete-image \
+            --repository-name $REPO \
+            --image-ids "$IMAGES"
+    fi
+    
+    # Delete repository
+    echo "Deleting ECR repository: $REPO"
+    aws ecr delete-repository \
+        --repository-name $REPO \
+        --force
+done
+
+echo "ECR cleanup completed!"
+</code></pre>
+<h4 id="step-5-additional-resources">Step 5: Additional Resources</h4>
+<pre><code># Additional resources cleanup script
+#!/bin/bash
+
+set -e
+
+echo "Starting additional resources cleanup..."
+
+# CloudWatch Log Groups
+echo "Deleting CloudWatch Log Groups..."
+LOG_GROUPS=$(aws logs describe-log-groups \
+    --query 'logGroups[?contains(logGroupName, `enterprise`)].logGroupName' \
+    --output text)
+
+for LOG_GROUP in $LOG_GROUPS; do
+    echo "Deleting log group: $LOG_GROUP"
+    aws logs delete-log-group --log-group-name "$LOG_GROUP"
+done
+
+# CloudWatch Alarms
+echo "Deleting CloudWatch Alarms..."
+ALARMS=$(aws cloudwatch describe-alarms \
+    --query 'MetricAlarms[?contains(AlarmName, `enterprise`) || contains(AlarmName, `ECS`) || contains(AlarmName, `ALB`)].AlarmName' \
+    --output text)
+
+for ALARM in $ALARMS; do
+    echo "Deleting alarm: $ALARM"
+    aws cloudwatch delete-alarms --alarm-names "$ALARM"
+done
+
+# CodeDeploy Applications
+echo "Deleting CodeDeploy Applications..."
+APPLICATIONS=$(aws deploy list-applications \
+    --query 'applications[?contains(@, `enterprise`)]' \
+    --output text)
+
+for APP in $APPLICATIONS; do
+    echo "Deleting CodeDeploy application: $APP"
+    aws deploy delete-application --application-name "$APP"
+done
+
+# S3 Buckets (be careful with this!)
+echo "Listing S3 buckets for manual review..."
+BUCKETS=$(aws s3api list-buckets \
+    --query 'Buckets[?contains(Name, `enterprise`)].Name' \
+    --output text)
+
+for BUCKET in $BUCKETS; do
+    echo "Found S3 bucket: $BUCKET (manual deletion required)"
+    echo "To delete: aws s3 rb s3://$BUCKET --force"
+done
+
+# IAM Roles and Policies
+echo "Listing IAM roles for manual review..."
+ROLES=$(aws iam list-roles \
+    --query 'Roles[?contains(RoleName, `enterprise`) || contains(RoleName, `ecs`) || contains(RoleName, `codedeploy`)].RoleName' \
+    --output text)
+
+for ROLE in $ROLES; do
+    echo "Found IAM role: $ROLE (manual deletion required)"
+done
+
+echo "Additional resources cleanup completed!"
+echo "Please manually review and delete S3 buckets and IAM roles as needed."
+</code></pre>
+<h3 id="automated-cleanup-script">Automated Cleanup Script</h3>
+<h4 id="master-cleanup-script">Master Cleanup Script</h4>
+<pre><code># Master cleanup script
+#!/bin/bash
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${YELLOW}Enterprise CI/CD Workshop Cleanup Script${NC}"
+echo -e "${YELLOW}=========================================${NC}"
+echo
+
+# Confirmation prompt
+read -p "This will delete ALL workshop resources. Are you sure? (yes/no): " -r
+echo
+if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
+    echo "Cleanup cancelled."
+    exit 1
+fi
+
+# Set AWS region
+export AWS_DEFAULT_REGION=${AWS_REGION:-us-east-1}
+echo -e "${GREEN}Using AWS region: $AWS_DEFAULT_REGION${NC}"
+
+# Function to check if AWS CLI is configured
+check_aws_config() {
+    if ! aws sts get-caller-identity >/dev/null 2>&1; then
+        echo -e "${RED}Error: AWS CLI not configured or no valid credentials${NC}"
+        exit 1
+    fi
+    
+    ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+    echo -e "${GREEN}AWS Account ID: $ACCOUNT_ID${NC}"
+}
+
+# Function to log cleanup steps
+log_step() {
+    echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] $1${NC}"
+}
+
+# Function to handle errors
+handle_error() {
+    echo -e "${RED}Error in step: $1${NC}"
+    echo -e "${RED}$2${NC}"
+    read -p "Continue with cleanup? (yes/no): " -r
+    if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
+        exit 1
+    fi
+}
+
+# Check AWS configuration
+check_aws_config
+
+# Step 1: ECS Resources
+log_step "Cleaning up ECS resources..."
+if ! ./cleanup-ecs.sh; then
+    handle_error "ECS cleanup" "Failed to clean up ECS resources"
+fi
+
+# Step 2: Load Balancers
+log_step "Cleaning up Load Balancers..."
+if ! ./cleanup-alb.sh; then
+    handle_error "ALB cleanup" "Failed to clean up Load Balancers"
+fi
+
+# Step 3: RDS
+log_step "Cleaning up RDS resources..."
+if ! ./cleanup-rds.sh; then
+    handle_error "RDS cleanup" "Failed to clean up RDS resources"
+fi
+
+# Step 4: ECR
+log_step "Cleaning up ECR repositories..."
+if ! ./cleanup-ecr.sh; then
+    handle_error "ECR cleanup" "Failed to clean up ECR repositories"
+fi
+
+# Step 5: Additional Resources
+log_step "Cleaning up additional resources..."
+if ! ./cleanup-additional.sh; then
+    handle_error "Additional cleanup" "Failed to clean up additional resources"
+fi
+
+# Final verification
+log_step "Running final verification..."
+python3 verify-cleanup.py
+
+echo
+echo -e "${GREEN}=========================================${NC}"
+echo -e "${GREEN}Cleanup completed successfully!${NC}"
+echo -e "${GREEN}=========================================${NC}"
+echo
+echo -e "${YELLOW}Please manually review and delete:${NC}"
+echo "- S3 buckets (if any)"
+echo "- IAM roles and policies (if any)"
+echo "- Route 53 hosted zones (if any)"
+echo "- CloudFormation stacks (if any)"
+echo
+echo -e "${YELLOW}Check your AWS billing dashboard to confirm no ongoing charges.${NC}"
+</code></pre>
+<h3 id="cleanup-verification">Cleanup Verification</h3>
+<h4 id="verification-script">Verification Script</h4>
+<pre><code># Python verification script
+import boto3
+import sys
+from datetime import datetime
+
+class CleanupVerifier:
+    def __init__(self):
+        self.ecs = boto3.client('ecs')
+        self.ecr = boto3.client('ecr')
+        self.rds = boto3.client('rds')
+        self.elbv2 = boto3.client('elbv2')
+        self.logs = boto3.client('logs')
+        self.cloudwatch = boto3.client('cloudwatch')
+        self.codedeploy = boto3.client('codedeploy')
+        
+        self.errors = []
+        self.warnings = []
+    
+    def verify_ecs_cleanup(self):
+        """Verify ECS resources are deleted"""
+        print("Verifying ECS cleanup...")
+        
+        # Check clusters
+        clusters = self.ecs.list_clusters()['clusterArns']
+        enterprise_clusters = [c for c in clusters if 'enterprise' in c]
+        
+        if enterprise_clusters:
+            self.errors.append(f"Found {len(enterprise_clusters)} ECS clusters still exist")
+            for cluster in enterprise_clusters:
+                print(f"  - {cluster}")
+        else:
+            print("  ✓ No ECS clusters found")
+        
+        # Check task definitions
+        task_defs = self.ecs.list_task_definitions(familyPrefix='enterprise')['taskDefinitionArns']
+        active_task_defs = [td for td in task_defs if ':ACTIVE' in td or td.endswith(':1')]
+        
+        if active_task_defs:
+            self.warnings.append(f"Found {len(active_task_defs)} active task definitions")
+        else:
+            print("  ✓ No active task definitions found")
+    
+    def verify_ecr_cleanup(self):
+        """Verify ECR repositories are deleted"""
+        print("Verifying ECR cleanup...")
+        
+        try:
+            repositories = self.ecr.describe_repositories()['repositories']
+            enterprise_repos = [r for r in repositories if 'enterprise' in r['repositoryName']]
+            
+            if enterprise_repos:
+                self.errors.append(f"Found {len(enterprise_repos)} ECR repositories still exist")
+                for repo in enterprise_repos:
+                    print(f"  - {repo['repositoryName']}")
+            else:
+                print("  ✓ No ECR repositories found")
+        except Exception as e:
+            print(f"  ✓ ECR verification completed (no repositories)")
+    
+    def verify_rds_cleanup(self):
+        """Verify RDS resources are deleted"""
+        print("Verifying RDS cleanup...")
+        
+        # Check DB instances
+        instances = self.rds.describe_db_instances()['DBInstances']
+        enterprise_instances = [i for i in instances if 'enterprise' in i['DBInstanceIdentifier']]
+        
+        if enterprise_instances:
+            self.errors.append(f"Found {len(enterprise_instances)} RDS instances still exist")
+            for instance in enterprise_instances:
+                print(f"  - {instance['DBInstanceIdentifier']} ({instance['DBInstanceStatus']})")
+        else:
+            print("  ✓ No RDS instances found")
+        
+        # Check snapshots
+        snapshots = self.rds.describe_db_snapshots()['DBSnapshots']
+        enterprise_snapshots = [s for s in snapshots if 'enterprise' in s['DBSnapshotIdentifier']]
+        
+        if enterprise_snapshots:
+            final_snapshots = [s for s in enterprise_snapshots if 'final-snapshot' in s['DBSnapshotIdentifier']]
+            other_snapshots = [s for s in enterprise_snapshots if 'final-snapshot' not in s['DBSnapshotIdentifier']]
+            
+            if other_snapshots:
+                self.warnings.append(f"Found {len(other_snapshots)} non-final snapshots")
+            
+            if final_snapshots:
+                print(f"  ✓ Found {len(final_snapshots)} final snapshots (expected)")
+        else:
+            print("  ✓ No RDS snapshots found")
+    
+    def verify_load_balancer_cleanup(self):
+        """Verify Load Balancer resources are deleted"""
+        print("Verifying Load Balancer cleanup...")
+        
+        load_balancers = self.elbv2.describe_load_balancers()['LoadBalancers']
+        enterprise_lbs = [lb for lb in load_balancers if 'enterprise' in lb['LoadBalancerName']]
+        
+        if enterprise_lbs:
+            self.errors.append(f"Found {len(enterprise_lbs)} Load Balancers still exist")
+            for lb in enterprise_lbs:
+                print(f"  - {lb['LoadBalancerName']}")
+        else:
+            print("  ✓ No Load Balancers found")
+        
+        # Check target groups
+        target_groups = self.elbv2.describe_target_groups()['TargetGroups']
+        enterprise_tgs = [tg for tg in target_groups if 'enterprise' in tg['TargetGroupName']]
+        
+        if enterprise_tgs:
+            self.errors.append(f"Found {len(enterprise_tgs)} Target Groups still exist")
+        else:
+            print("  ✓ No Target Groups found")
+    
+    def verify_cloudwatch_cleanup(self):
+        """Verify CloudWatch resources are cleaned up"""
+        print("Verifying CloudWatch cleanup...")
+        
+        # Check log groups
+        try:
+            log_groups = self.logs.describe_log_groups()['logGroups']
+            enterprise_logs = [lg for lg in log_groups if 'enterprise' in lg['logGroupName']]
+            
+            if enterprise_logs:
+                self.warnings.append(f"Found {len(enterprise_logs)} CloudWatch Log Groups")
+            else:
+                print("  ✓ No CloudWatch Log Groups found")
+        except Exception:
+            print("  ✓ CloudWatch Logs verification completed")
+        
+        # Check alarms
+        try:
+            alarms = self.cloudwatch.describe_alarms()['MetricAlarms']
+            enterprise_alarms = [a for a in alarms if 'enterprise' in a['AlarmName'].lower() or 
+                               'ecs' in a['AlarmName'].lower() or 'alb' in a['AlarmName'].lower()]
+            
+            if enterprise_alarms:
+                self.warnings.append(f"Found {len(enterprise_alarms)} CloudWatch Alarms")
+            else:
+                print("  ✓ No CloudWatch Alarms found")
+        except Exception:
+            print("  ✓ CloudWatch Alarms verification completed")
+    
+    def verify_codedeploy_cleanup(self):
+        """Verify CodeDeploy resources are cleaned up"""
+        print("Verifying CodeDeploy cleanup...")
+        
+        try:
+            applications = self.codedeploy.list_applications()['applications']
+            enterprise_apps = [app for app in applications if 'enterprise' in app]
+            
+            if enterprise_apps:
+                self.warnings.append(f"Found {len(enterprise_apps)} CodeDeploy Applications")
+            else:
+                print("  ✓ No CodeDeploy Applications found")
+        except Exception:
+            print("  ✓ CodeDeploy verification completed")
+    
+    def run_verification(self):
+        """Run complete cleanup verification"""
+        print("\n" + "="*50)
+        print("CLEANUP VERIFICATION REPORT")
+        print("="*50)
+        print(f"Timestamp: {datetime.utcnow().isoformat()}")
+        print()
+        
+        self.verify_ecs_cleanup()
+        self.verify_ecr_cleanup()
+        self.verify_rds_cleanup()
+        self.verify_load_balancer_cleanup()
+        self.verify_cloudwatch_cleanup()
+        self.verify_codedeploy_cleanup()
+        
+        print("\n" + "="*50)
+        print("VERIFICATION SUMMARY")
+        print("="*50)
+        
+        if self.errors:
+            print(f"❌ ERRORS ({len(self.errors)}):")
+            for error in self.errors:
+                print(f"   - {error}")
+        
+        if self.warnings:
+            print(f"⚠️  WARNINGS ({len(self.warnings)}):")
+            for warning in self.warnings:
+                print(f"   - {warning}")
+        
+        if not self.errors and not self.warnings:
+            print("✅ All resources successfully cleaned up!")
+        elif not self.errors:
+            print("✅ Cleanup completed with warnings (manual review recommended)")
+        else:
+            print("❌ Cleanup incomplete - errors found")
+            return False
+        
+        print("\n💡 Don't forget to check your AWS billing dashboard!")
+        return True
+
+if __name__ == "__main__":
+    verifier = CleanupVerifier()
+    success = verifier.run_verification()
+    sys.exit(0 if success else 1)
+</code></pre>
+<h3 id="cost-impact-analysis">Cost Impact Analysis</h3>
+<h4 id="final-cost-check">Final Cost Check</h4>
+<pre><code># Final cost analysis script
+import boto3
+import json
+from datetime import datetime, timedelta
+
+def analyze_final_costs():
+    """Analyze costs before and after cleanup"""
+    ce = boto3.client('ce')
+    
+    # Get costs for the last 30 days
+    end_date = datetime.now().replace(day=1)  # First day of current month
+    start_date = (end_date - timedelta(days=30)).replace(day=1)
+    
+    response = ce.get_cost_and_usage(
+        TimePeriod={
+            'Start': start_date.strftime('%Y-%m-%d'),
+            'End': end_date.strftime('%Y-%m-%d')
+        },
+        Granularity='DAILY',
+        Metrics=['BlendedCost'],
+        Filter={
+            'Tags': {
+                'Key': 'Project',
+                'Values': ['enterprise-app']
+            }
+        }
+    )
+    
+    total_cost = 0
+    daily_costs = []
+    
+    for result in response['ResultsByTime']:
+        daily_cost = float(result['Total']['BlendedCost']['Amount'])
+        total_cost += daily_cost
+        daily_costs.append({
+            'date': result['TimePeriod']['Start'],
+            'cost': daily_cost
+        })
+    
+    print(f"\n💰 COST ANALYSIS")
+    print(f"=================")
+    print(f"Total cost (last 30 days): ${total_cost:.2f}")
+    print(f"Average daily cost: ${total_cost/30:.2f}")
+    
+    if total_cost > 0:
+        print(f"\n⚠️  WARNING: Still incurring costs!")
+        print(f"Please review remaining resources.")
+    else:
+        print(f"\n✅ No costs detected - cleanup successful!")
+    
+    return total_cost
+
+if __name__ == "__main__":
+    analyze_final_costs()
+</code></pre>
+	
+  
+        
+        </div> 
+        
+
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-prev" href="../9-cost-optimization/" title="Cost Optimization"><i class="fa fa-chevron-left"></i></a>
+		
+	
+	 
+	 
+		
+		
+
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.min.js?1754917932"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1754917932"></script>
+    <script src="../js/jquery.sticky.js?1754917932"></script>
+    <script src="../js/featherlight.min.js?1754917932"></script>
+    <script src="../js/highlight.pack.js?1754917932"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1754917932"></script>
+    <script src="../js/learn.js?1754917932"></script>
+    <script src="../js/hugo-learn.js?1754917932"></script>
+
+    <link href="../mermaid/mermaid.css?1754917932" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1754917932"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

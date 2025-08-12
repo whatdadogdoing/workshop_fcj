@@ -1,0 +1,21 @@
+baseURL = 'https://whatdadogdoing.github.io/workshop_fcj'
+languageCode = 'en-us'
+title = 'Enterprise CI/CD Pipeline Workshop'
+theme = 'hugo-theme-learn'
+
+[params]
+  version = "1.0"
+  author = "AWS Workshop"
+  description = "Build a complete enterprise-grade CI/CD pipeline for a full-stack application using AWS services, GitHub Actions, and modern DevOps practices."
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  disableLandingPageButton = false
+  disableShortcutsTitle = false
+  disableLanguageSwitchingButton = true
+  ordersectionsby = "weight"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
